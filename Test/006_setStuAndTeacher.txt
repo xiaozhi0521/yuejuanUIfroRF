@@ -1,0 +1,94 @@
+*** Settings ***
+Library           IYXUITest
+Resource          Resources/util.tsv
+
+*** Variables ***
+${loginName}      30200admin    # 账号
+${password}       123456    # 密码
+
+*** Test Cases ***
+setKS
+    [Setup]
+    Login    ${loginName}    ${password}
+    Go To    https://testyue.haofenshu.com/minions/exam/112597/setting/stu    #直接跳转到该考试
+    #Wait Set Text    //*[@id="pane-examManage"]/div/div/div/div[1]/div[4]/div/div/input    UI自动化设置考生勿删-H结尾    #搜索考试
+    #Press Key    xpath=//*[@id="pane-examManage"]/div/div/div/div[1]/div[4]/div/div/input    \\13    #按下回车键
+    #Wait Single Click    //*[@id="pane-examManage"]/div/div/div/div[2]/div[1]/div[2]/div[1]/a    #点击第一个考试组
+    #sleep    3
+    #Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/div[2]/div[4]/button/span    #点击考生信息管理
+    #sleep    1
+    #Wait Single Click    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div[4]/div[1]/div/div[1]/button    #关闭考生复用窗口
+    #sleep    1
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]/button[2]/span    #点击选择班级
+    sleep    3
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div[4]/div[5]/div/div[2]/div[3]/div[1]/div/label/span[1]/span    #选择自动化1班
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div[4]/div[5]/div/div[3]/div/button[1]/span    #点击确定
+    sleep    6
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]/button[1]/span    #点击单个新增    #span后面没有/1
+    Wait Set Text    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div[4]/div[3]/div/div[2]/div[2]/div[2]/div/div/input    4152600001    #搜索该考号考生
+    sleep    3
+    Wait Single Click    xpath=//li[@role='option']    #选择该考生
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div[4]/div[3]/div/div[3]/div/button[1]/span    #点击确定
+    sleep    5
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[1]/button[9]/span    #点击删除所有考生
+    sleep    3
+    Wait Single Click    xpath=/html/body/div[6]/div/div[3]/button[2]/span    #点击确定
+    Close Browser
+    [Teardown]
+
+setTeacher
+    Login    ${loginName}    ${password}
+    Go To    https://testyue.haofenshu.com/minions/subject/1076935/setting/task?type=task    #直接跳转到设置任务
+    #Wait Set Text    //*[@id="pane-examManage"]/div/div/div/div[1]/div[4]/div/div/input    UI自动化设置老师勿删-H结尾    #搜索考试
+    #Press Key    xpath=//*[@id="pane-examManage"]/div/div/div/div[1]/div[4]/div/div/input    \\13    #按下回车键
+    #Wait Single Click    //*[@id="pane-examManage"]/div/div/div/div[2]/div[2]/div/div[2]/a[1]    #点击第一个科目
+    #Sleep    2
+    #Wait Single Click    //*[@id="AppMain"]/div/div[2]/div/div[1]/div/div[2]/div/div[5]/div[3]/div/a    #点击设置题块和阅卷老师入口
+    #Wait Single Click    //*[@id="tab-1"]    #点击设置阅卷老师tab
+    Sleep    2
+    #开始设置单评的老师
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[5]/div/div/span    #点击设置老师按钮
+    Wait Single Click    //*[@id="pane-first"]/div[1]/div[2]/div/div/input    #点击年级下拉框
+    Wait Single Click    xpath=/html/body/div[5]/div[1]/div[1]/ul/li[1]    #选择年级的全部
+    Wait Single Click    //*[@id="pane-first"]/div[1]/div[3]/div/div/input    #选择班级下拉框
+    Wait Single Click    xpath=/html/body/div[6]/div[1]/div[1]/ul/li[1]    #选择班级的全部
+    Sleep    1
+    Wait Set Text    //*[@id="pane-first"]/div[1]/div[4]/div/input    自动化0001    #输入自动化0001
+    Sleep    1
+    Press Key    //*[@id="pane-first"]/div[1]/div[4]/div/input    \\13    #按下回车
+    Sleep    1
+    Wait Single Click    //*[@id="pane-first"]/div[2]/div[2]/div[2]/label/span[1]/span    #勾选自动化0001老师
+    sleep    3
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[8]/div/div[3]/span/button[2]    #点击确定
+    Sleep    2
+    #开始设置双评的相关设置
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[4]/div/div    #点击设置双评按钮
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div/div/span[3]    #点击双评tab
+    Sleep    1
+    Wait Set Text    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div/div[2]/div[1]/div/input    1    #设置分差为1分
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[3]/div/button[2]    #点击确定
+    Sleep    4
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[7]/div/div    #点击设置仲裁老师按钮
+    Sleep    2
+    Wait Single Click    //*[@id="tab-upload"]    #点击从已导入阅卷老师中选择
+    Sleep    2
+    Wait Single Click    //*[@id="pane-upload"]/div[2]/div[2]/div[2]/label/span[1]/span    #选择第一个老师
+    Sleep    2
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[8]/div/div[3]/span/button[2]    #保存
+    #批量导入    屏蔽掉批量导入
+    #Sleep    2
+    #Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/div/button/span    #点击批量导入阅卷老师按钮
+    #Execute File Exe    10.10.3.249    C://upload//YueJuan//uploadTeacher.exe    #选择文件
+    #删除所有阅卷老师并恢复初始状态
+    Sleep    2
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[2]/div[1]/div[3]/table/tbody/tr[1]/td[4]/div/div    #点击评阅方式按钮
+    Sleep    2
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[2]/div/div/span[2]    #切换回单评
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[1]/div[2]/div[3]/div[3]/div/div[3]/div/button[2]    #点击保存
+    Go To    https://testyue.haofenshu.com/minions/subject/1076935/setting/stu?subjectAdmin=true    #跳到设置科目考生和阅卷老师
+    Wait Single Click    //*[@id="tab-1"]    #切换到阅卷老师tab
+    Sleep    1
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[3]/div/div[2]/button[5]/span    #点击删除所有阅卷老师
+    Sleep    2
+    Wait Single Click    xpath=/html/body/div[5]/div/div[3]/button[2]    #点击确定
+    Close Browser

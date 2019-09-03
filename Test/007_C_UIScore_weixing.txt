@@ -1,0 +1,242 @@
+*** Settings ***
+Library           IYXUITest
+Library           Collections
+
+*** Variables ***
+${loginName}      30200admin    # 账户
+${password}       123456    # 密码
+
+*** Test Cases ***
+C_Call OffTongFen
+    C_login    ${loginName}    ${password}
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]    #前往出成绩页面
+    Sleep    4
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/span[3]/button[2]    #取消发布
+    sleep    2
+    Click Button    xpath=/html/body/div[3]/div/div[3]/button[2]
+    sleep    3
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[1]/div/div/div[1]/div/span[3]/span/a    #点击面包屑
+    sleep    5
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/section/div/div/div/a    #取消统分
+    Wait Single Click    xpath=/html/body/div[4]/div/div[3]/button[2]/span    #确定
+    sleep    5
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/p/a    #查看成绩
+    sleep    3
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[4]/div/button[2]    #手动编辑
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[1]/div[1]/div[2]/label[1]/span    #点击选择答案A
+    sleep    1
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[2]/div[1]/div[2]/label[2]/span    #点击选择答案B
+    sleep    1
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[3]/div[1]/div[2]/label[4]/span    #点击选择答案D
+    sleep    1
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[4]/div[1]/div[2]/label[2]/span    #点击选择答案B
+    sleep    1
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[5]/div[1]/div[2]/label[1]/span    #点击选择答案A
+    sleep    2
+    click Button    xpath=//*[@id="pane-objAAnswer"]/div[4]/div/button[2]    #确定
+    click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[4]/div/div[2]/div[2]/button[2]    #确定保存
+    sleep    2
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[1]/div/div[1]/div/span[3]/span/a    #点击面包屑
+    sleep    6
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]/a    #点击统分
+    sleep    2
+    Wait Single Click    xpath=/html/body/div[4]/div/div[3]/button[2]/span    #点击去处理
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[4]/div/button[2]/span    #点击手动编辑
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[1]/div/div/label[1]/span    #点击选择答案A
+    sleep    2
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[2]/div/div/label[2]/span    #点击选择答案B
+    sleep    1
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[3]/div[1]/div[2]/label[4]/span    #点击选择答案D
+    sleep    1
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[4]/div[1]/div[2]/label[2]/span    #点击选择答案B
+    sleep    1
+    Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[5]/div[1]/div[2]/label[1]/span    #点击选择答案A
+    sleep    1
+    click Button    xpath=//*[@id="pane-objAAnswer"]/div[4]/div/button[2]
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[1]/div/div[1]/div/span[3]/span/a    #点击面包屑
+    sleep    1
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]/a    #点击统分
+    sleep    6
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]    #前往出成绩页面
+    sleep    2
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/span[3]/button[2]    #发布成绩
+    Wait Single Click    xpath=/html/body/div[3]/div/div[3]/button[2]
+    sleep    8
+    Close All Browsers
+
+C_TongFen
+    C_login    ${loginName}    ${password}
+    #Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]    #统分
+    #Wait Single Click    xpath=/html/body/div[4]/div/div[3]/button[1]/span    #取消
+    #Single Click    xpath=/html/body/div[4]/div/div[3]/button[2]/span    #去处理
+    #sleep    5
+    #Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[4]/div/button[2]    #手动编辑
+    #Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[1]/div[1]/div[2]/label[1]/span    #点击选择答案A
+    #Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[2]/div[1]/div[2]/label[2]/span    #点击选择答案B
+    #Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[3]/div[1]/div[2]/label[4]/span    #点击选择答案D
+    #Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[4]/div[1]/div[2]/label[2]/span    #点击选择答案B
+    #Wait Single Click    xpath=//*[@id="pane-objAAnswer"]/div[1]/div[2]/div[5]/div[1]/div[2]/label[1]/span    #点击选择答案A
+    #click Button    xpath=//*[@id="pane-objAAnswer"]/div[4]/div/button[2]    #确定
+    #sleep    2
+    #Wait Single Click    xpath=//*[@id="AppMain"]/div/div[1]/div/div[1]/div/span[3]/span/a    #点击面包屑
+    #sleep    4
+    #Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]    #统分
+    #sleep    6
+    C_uploadImg
+    sleep    6
+    #C_Score_Title
+    #C_Score_Content
+    #Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/span[3]/button[2]    #发布成绩
+    #Sleep    2
+    #Click Button    xpath=/html/body/div[3]/div/div[3]/button[2]
+    Close All Browsers
+
+*** Keywords ***
+C_Login
+    [Arguments]    ${loginName}    ${password}    # 用户登录
+    My Open Browser    https://testyue.haofenshu.com    Chrome    http://10.10.3.249:6006/wd/hub
+    Wait set text    name=loginName    ${loginName}
+    Wait set text    name=password    ${password}
+    Click Button    id=btnSubmit    #登录
+    Sleep    3
+    Wait single click    xpath=//*[@id="app"]/div/div[1]/div[1]/div[2]/div[2]/button    #关闭反馈
+    sleep    2
+    Wait Set Text    xpath=//*[@id="pane-examManage"]/div/div/div/div[1]/div[4]/div/div/input    自动化发布成绩2
+    sleep    1
+    Press Key    xpath=//*[@id="pane-examManage"]/div/div/div/div[1]/div[4]/div/div/input    \\13
+    sleep    3
+    Wait Single Click    xpath=//*[@id="pane-examManage"]/div/div/div/div[2]/div[2]/div[2]/div[2]/a    #选择语文科目
+    sleep    5
+
+C_uploadImg
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[2]/div/a    #上传原卷
+    sleep    4
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[1]/div[3]/div/div/div/button    #本地上传
+    Os System    C:\\upload\\YueJuan\\uploadYuanJuan.exe
+    sleep    3
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[1]/div/div/div[1]/div/span[3]/span/a    #点击面包屑
+    sleep    4
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]    #前往出成绩页面
+    sleep    4
+
+C_Score_Title
+    Wait Single Click    xpath=//*[@id="tab-StuScore"]    #考生成绩
+    sleep    3
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[3]/div/div/input    #点击下拉选项状态
+    sleep    3
+    Wait Single Click    xpath=/html/body/div[3]/div[1]/div[1]/ul/li[2]/span    #查询：正常
+    sleep    2
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[5]/button[1]/span/span[2]    #点击0分批量标记缺考
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[7]/div/div/div[3]/span/button[2]    #确定
+    sleep    3
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[5]/button[2]/span/span[2]    #导出成绩
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[6]/div/div/div[3]/span/button[2]    #确定
+    sleep    4
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[5]/button[3]/span/span[2]    #批量补录成绩
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[8]/div/div/div[3]/span/a/button    #下载模板
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[8]/div/div/div[3]/span/div/div/button    #导入文件
+    Os System    C:\\upload\\YueJuan\\uploadScore.exe
+    Sleep    5
+
+C_Score_Content
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[10]    #查看成绩
+    Cycle Click    //*[@id="AppMain"]/div/div[2]/div[2]/div[13]/div/div[2]/span/div[1]/div[2]/span[5]    3    #点击3次放大图片
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[2]/div[13]/div/div[2]/span/div[1]/div[2]/span[4]    #向右旋转
+    sleep    4
+    Click Button    //*[@id="AppMain"]/div/div[2]/div[2]/div[13]/div/div[1]/button    #关闭弹窗
+    sleep    5
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    0602
+    Press Key    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    \\13
+    sleep    4
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[11]/div/div/div/button    #补录成绩
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[11]/div/div/div[3]/span/button[2]    #确定
+    sleep    5
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[11]/div/div/div[2]/div/div[3]/div/input    10
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[11]/div/div/div[2]/div/div[4]/div/input    20
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[11]/div/div/div[2]/div/div[5]/div/input    30
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[11]/div/div/div[2]/div/div[6]/div/input    60
+    sleep    2
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[11]/div/div/div[3]/span/button[2]    #确定
+    sleep    3
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[11]/div/div/div/button[2]    #取消补录
+    Click Button    //*[@id="AppMain"]/div/div[2]/div[2]/div[12]/div/div[3]/span/button[2]    #确定
+    sleep    3
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[2]/div[2]/span/span    #重新统分
+    sleep    5
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    0107
+    Press Key    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    \\13
+    Sleep    4
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[11]/div/div/div/button[1]    #修改成绩
+    ${win_title}    List Windows
+    select window    ${win_title[1]}
+    Wait set text    xpath=//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/div[1]/div[2]/div/input    ab
+    Sleep    1
+    Wait Single Click    //*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/div[3]/a[1]    #保存客观题答案
+    Sleep    3
+    #Click Element    //*[@id="tab-1"]    #主观题
+    #Sleep    4
+    #Wait set text    xpath=//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/div[3]/div[2]/div[2]/div/input    2.3
+    #Sleep    2
+    #Wait Single Click    xpath=//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/div[4]/a[1]    #保存主观题答案
+    #Wait Single Click    xpath=/html/body/div[3]/div/div[3]/button[2]/span    #确定
+    Sleep    4    #修改成绩结束
+    Close Window
+    ${win_title1}    List Windows
+    select window    ${win_title1[0]}
+    Sleep    3    \    #调换试卷-start
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[11]/div/div/div/button[2]    #调换试卷
+    Sleep    4
+    ${win_title2}    List Windows
+    Select Window    ${win_title2[1]}
+    Wait Single Click    xpath=//*[@id="app"]/div/div[2]/div/div[2]/div[3]/div[1]    #选择考生
+    Sleep    3
+    Wait Single Click    xpath=//*[@id="app"]/div/div[2]/div/div[2]/div[4]/a[1]    #保存
+    Wait Single Click    xpath=/html/body/div[3]/div/div[3]/button[2]
+    Sleep    6    \    #调换试卷—end
+    close Window
+    ${win_title3}    List Windows
+    select window    ${win_title3[0]}
+    sleep    4    \    #标记作弊—start
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    0111
+    Press Key    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    \\13
+    Sleep    4
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[2]/div[3]/div/div[3]/table/tbody/tr[2]/td[11]/div/div/div/button[4]    #标记作弊
+    Sleep    2
+    Wait Single Click    //*[@id="AppMain"]/div/div[2]/div[2]/div[17]/div/div[3]/div/button[1]    #确定
+    sleep    5
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    0111
+    Press Key    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    \\13
+    Sleep    4
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[3]/div/div[3]/table/tbody/tr/td[11]/div/div/div/button[3]    #取消作弊
+    Sleep    2    \    #标记作弊—end
+    Click Button    //*[@id="AppMain"]/div/div[2]/div[2]/div[18]/div/div[3]/div/button[1]
+    Sleep    4    \    #标记缺考—start
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[3]/div/div/input    #点击下拉选项状态
+    sleep    3
+    Wait Single Click    xpath=/html/body/div[3]/div[1]/div[1]/ul/li[2]/span    #查询：正常
+    sleep    2
+    Wait set text    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    0105
+    Press Key    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[1]/div[4]/div/input    \\13
+    Sleep    4
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[11]/div/div/div/button[3]/span    #标记缺考
+    Click Button    xpath=//*[@id="AppMain"]/div/div[2]/div[2]/div[10]/div/div/div[3]/span/button[2]    #确定
+    Sleep    3
+    Wait Single Click    //*[@id="AppMain"]/div/div[1]/div/div/div[1]/div/span[3]/span/a    #返回科目首页
+    Sleep    5
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/section/div/div/div/a    #取消统分
+    Wait Single Click    xpath=/html/body/div[4]/div/div[3]/button[2]/span    #确定
+    sleep    4
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[2]/div/div[1]/div[3]/div/a/span    #考生/阅卷老师
+    sleep    4
+    Wait set text    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[3]/div[1]/div[2]/div[3]/input    自动化李琳薇    #搜索缺考考生
+    Press Key    //*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[3]/div[1]/div[2]/div[3]/input    \\13
+    sleep    3
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[1]/div[2]/div[3]/div[3]/div[1]/div/div[3]/table/tbody/tr/td[9]/div/div/button[2]    #取消缺考
+    Click Element    xpath=/html/body/div[4]/div/div[3]/button[2]/span    #确定
+    sleep    3
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[1]/div/div[1]/div/span[3]/span/a    #返回科目首页
+    sleep    4
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]    #统分
+    sleep    6
+    Wait Single Click    xpath=//*[@id="AppMain"]/div/div[2]/div/div[2]/div[1]/div/div[2]    #前往出成绩页面
+    sleep    5

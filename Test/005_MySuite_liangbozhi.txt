@@ -1,0 +1,52 @@
+*** Settings ***
+Library           Collections
+Resource          Resources/util.tsv
+Library           IYXUITest
+
+*** Variables ***
+${loginName}      13242858003    # 账号
+${password}       123456    # 密码
+${name}           13242858040    # 回评老师
+${hello}          1234556
+
+*** Test Cases ***
+YueJuan
+    mylogin    ${loginName}    ${password}
+    Wait Single Click    css=#tab-yueTasks
+    sleep    2
+    page should contain    开始阅卷
+    Wait Single Click    css=#pane-yueTasks > div > div > div > div.taskStage > div > div.btnInfo > a > button > span    #点击我要阅卷
+    sleep    2
+    page should contain    总剩余量：2
+    Wait Single Click    css=#AppMain > div > div.markingTaskList.el-row > div.singleBlocks > div.blockBox > div:nth-child(1) > div.blocks_list_bottom.el-row > div > div:nth-child(1) > div.pos_btn.el-col.el-col-6.el-col-offset-2 > span    #点击我要阅卷
+    sleep    10
+    @{window_handle}    list windows
+    select window    @{window_handle}[1]    #切换到评分页面
+    cycle_click    css=#scoringBoard > div.quick-mark-content > div.bg-white.content > div.mgt-10.el-row.is-justify-space-between.is-align-middle.el-row--flex > div.full-score-button.el-col.el-col-6 > button > span    #点击满分
+    sleep    2
+    cycle_click    css=#scoringBoard > div.quick-mark-content > div.bg-white.content > div.mgt-10.el-row.is-justify-space-between.is-align-middle.el-row--flex > div.full-score-button.el-col.el-col-6 > button > span    #点击满分
+    close window    #关闭评分页面
+    select window    @{window_handle}[0]    #切换到原来的页面
+    Wait Single Click    css=#app > div > div.nav-bar.app-nav > div > div.layout-nav.el-col.el-col-13 > ul > li:nth-child(1)    #点击首页按钮
+    sleep    2
+    Wait Single Click    css=#pane-examManage > div > div > div > div:nth-child(2) > div.examStage-detail > div > div.examStage-detail-stage-subject > a    #点击科目
+    sleep    2
+    Wait Single Click    css=#AppMain > div > div:nth-child(2) > div > div.el-col.el-col-19 > div.content-control.mgb-10.el-row.is-align-middle.el-row--flex > div.el-col.el-col-5 > button.el-button.mgr-5.font-14.el-button--primary.el-button--small > span > a    #点击进度
+    sleep    2
+    Wait Single Click    css=#pane-1 > div.top-btn.el-row > div.el-col.el-col-20 > button.el-button.btn-five.read.el-button--text > span    #点击重阅
+    sleep    2
+    Wait Single Click    css=#pane-1 > div.bottom-content.el-row > div:nth-child(11) > div > div.el-dialog__body > div.el-checkbox-group > span:nth-child(1) > label > span.el-checkbox__input > span    #点击题块1
+    sleep    2
+    Wait Single Click    css=#pane-1 > div.bottom-content.el-row > div:nth-child(11) > div > div.el-dialog__footer > span > button.el-button.el-button--primary > span    #点击确定
+    close browser
+
+*** Keywords ***
+MyLogin
+    [Arguments]    ${loginName}    ${password}
+    [Documentation]    用户登录,登录hub节点：http://10.10.3.249:6006/wd/hub
+    My Open Browser    https://testyue.haofenshu.com/minions/login    Chrome    http://10.10.3.249:6006/wd/hub
+    Wait Set Text    name=loginName    ${loginName}
+    Wait Set Text    name=password    ${password}
+    Click Button    id=btnSubmit
+    sleep    6
+    Click Button    xpath=//*[@id="app"]/div/div[1]/div[1]/div[2]/div[2]/button

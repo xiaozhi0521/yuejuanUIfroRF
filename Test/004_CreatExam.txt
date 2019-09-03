@@ -1,0 +1,25 @@
+*** Settings ***
+Resource          Resources/util.tsv
+Library           Collections
+Library           IYXUITest
+
+*** Variables ***
+${loginName}      30200admin    #账号
+${password}       123456    # 密码
+
+*** Test Cases ***
+CreatSchoolExam
+    Login    ${loginName}    ${password}
+    Click Button    xpath=//*[@id="app"]/div/div[1]/div/div[3]/a[1]/button
+    Wait set text    xpath=//*[@id="AppMain"]/div/div/div[2]/div[1]/form/div[1]/div/div/input    自动化校内考试
+    SlectDateCSS
+    Window ScrollTo    1700    #滑动到底部
+    sleep    2
+    wait single click    xpath=//*[@id="AppMain"]/div/div/div[2]/div[3]/div[1]/button[1]/span    #添加科目
+    wait single click    xpath=//*[@id="AppMain"]/div/div/div[4]/div/div[2]/div[1]/div/label[7]/span[1]/span    #选择初一
+    wait single click    xpath=//*[@id="AppMain"]/div/div/div[4]/div/div[2]/div[2]/div[1]/div[2]/div/label[1]/span[1]/span    #语文
+    wait single click    xpath=//*[@id="AppMain"]/div/div/div[4]/div/div[3]/div/button[1]/span    #保存
+    sleep    2
+    wait single click    xpath=//*[@id="AppMain"]/div/div/div[2]/div[4]/button[1]
+    sleep    3
+    Close All Browsers
